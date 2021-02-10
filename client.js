@@ -16,6 +16,11 @@ const connect = function() {
     conn.on('connect', function() { // event listener , event handler (callback)
         console.log("Successfully connected to game server");
         conn.write('Name: BDL'); //.write method sends reply to server
+
+        conn.on('data', (data) => {
+            console.log('Server says:', data);
+        });
+
     })
     return conn;
 }
