@@ -10,16 +10,15 @@ const connect = function() {
         host: '135.23.222.131',
         port: 50542
     });
-    // interpret incoming data as text
-    conn.setEncoding('utf8');
 
-    conn.on('data', function(data) { // sends data to the server
-        console.log(data);
+    conn.setEncoding('utf8'); // interpret incoming data as text
+
+    conn.on('connect', function() { // event listener , event handler (callback)
+        console.log("Successfully connected to game server");
+        conn.write('Name: BDL'); //.write method sends reply to server
     })
-
-
     return conn;
 }
 
 
-module.exports = connect;
+module.exports = connect; // exports connect function
