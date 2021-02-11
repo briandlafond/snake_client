@@ -7,7 +7,7 @@ const setupInput = function(conn) {
     stdin.setEncoding('utf8');
     stdin.resume();
     const handleUserInput = function() {
-        stdin.on('data', (key) => {
+        stdin.on('data', (key) => { //allows for key entry input from user
             if (key === 'w') {
                 conn.write('Move: up')
             }
@@ -21,12 +21,10 @@ const setupInput = function(conn) {
                 conn.write('Move: right');
             }
             if (key === 'q') {
-                conn.write('Say: Hello World')
+                conn.write('Say: Whats up!!')
             }
-            if (key === '\u0003') {
-                process.stdout.write('Terminated');
-                process.stdout.write('\n')
-                process.exit();
+            if (key === '\u0003') { // u0003 maps to control+c 
+                process.exit(); // quit the process of running client.js
             }
         });
     }
